@@ -40,7 +40,7 @@ I was able to get the delete route to work.
 
 <a href="https://github.com/Jberg21/Note-Taker-2">GitHub Repo</a>
 
-<a href="">Live Heroku Deploy</a>
+<a href="https://pure-island-90540.herokuapp.com/notes">Live Heroku Deploy</a>
 
 
 ---
