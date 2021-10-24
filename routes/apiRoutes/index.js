@@ -8,31 +8,31 @@ router.get("/notes", (req, res) => {
 }); 
 
 router.post("/notes", (req, res) => {
-    let notesArray = JSON.parse(fs.readFileSync(path.join(__dirname, "../../db/db.json"), "utf8"))
+    let array = JSON.parse(fs.readFileSync(path.join(__dirname, "../../db/db.json"), "utf8"))
     let newNote = req.body;
-    notesArray.push(newNote)
+    array.push(newNote)
     let id = 1;
-    notesArray.forEach(note => {
+    array.forEach(note => {
         note.id = id;
         id ++;
-        return notesArray
+        return array
     });
 
     fs.writeFileSync(
         path.join(__dirname, "../../db/db.json"),
-        JSON.stringify(notesArray), err =>{
+        JSON.stringify(array), err =>{
             if (err) throw err
         });
-        return res.json(notesArray)
+        return res.json(array)
 
 });
 
 
 router.delete("/notes/:id", (req, res) => {
     let noteId = req.params.id.toString()
-    let notesArray = JSON.parse(fs.readFileSync(path.join(__dirname, "../../db/db.json"), "utf8"))
+    let array = JSON.parse(fs.readFileSync(path.join(__dirname, "../../db/db.json"), "utf8"))
     
-    const newSavedNote = notesArray.filter(note => note.id.toString() !== noteId)
+    const newSavedNote = array.filter(note => note.id.toString() !== noteId)
 
     fs.writeFileSync(
         path.join(__dirname, "../../db/db.json"),
